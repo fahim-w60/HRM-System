@@ -16,13 +16,13 @@ class EmployeeSeeder extends Seeder
     {
         DB::table('employees')->insert([
             [
+                'department_id' => '1',
                 'emp_name' => 'employee 1',
                 'emp_email' => 'employee1@gmail.com',
                 'emp_phone' => '01869520885',
                 'emp_status' => '1',
                 'emp_address' => 'Dhaka',
-                'department_id' => '1',
-                'user_id' => '2',
+                'user_id' => '0', 
             ],
 
             [
@@ -32,7 +32,7 @@ class EmployeeSeeder extends Seeder
                 'emp_status' => '1',
                 'emp_address' => 'Dhaka',
                 'department_id' => '1',
-                'user_id' => '0',
+                'user_id' => '0', 
             ],
 
             [
@@ -52,8 +52,8 @@ class EmployeeSeeder extends Seeder
                 'emp_status' => '1',
                 'emp_address' => 'Dhaka',
                 'department_id' => '1',
-                'user_id' => '0',
-            ]
+                'user_id' => '0',  
+            ],
         ]);    
     }
 }

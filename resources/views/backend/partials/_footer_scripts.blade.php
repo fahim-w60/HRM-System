@@ -11,6 +11,15 @@
 
     
     <script src="{{ asset('src/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('src/plugins/src/table/datatable/datatables.js')}}"></script>
+    <script src="{{ asset('src/plugins/src/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ asset('src/assets/js/apps/invoice-list.js')}}"></script>
+    <script src="{{asset('src/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
     @if(Session::has('message'))

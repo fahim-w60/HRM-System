@@ -12,9 +12,15 @@
 <link href="{{ asset('src/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('layouts/vertical-dark-menu/css/light/plugins.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('layouts/vertical-dark-menu/css/dark/plugins.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/src/table/datatable/datatables.css')}}" />
+    
+<link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/light/table/datatable/dt-global_style.css')}}" />
+<link href="{{asset('src/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 <!-- END GLOBAL MANDATORY STYLES -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+<link href="{{ asset('src/assets/css/light/apps/invoice-list.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('src/assets/css/dark/apps/invoice-list.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('src/plugins/src/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('src/assets/css/light/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('src/assets/css/dark/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" />

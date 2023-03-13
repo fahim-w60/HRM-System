@@ -19,7 +19,7 @@
     <li class="menu">
         <a href="#invoice" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                 <span>Employee</span>
             </div>
             <div>
@@ -28,10 +28,10 @@
         </a>
         <ul class="collapse submenu list-unstyled" id="invoice" data-bs-parent="#accordionExample">
             <li>
-                <a href="./app-invoice-list.html"> Add Employee </a>
+                <a href="{{ route('employee.create') }}"> Add Employee </a>
             </li>
             <li>
-                <a href="./app-invoice-preview.html"> Employee List </a>
+                <a href="{{ route('employee.index') }}"> Employee List </a>
             </li>                            
         </ul>
     </li>

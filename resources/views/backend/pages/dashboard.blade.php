@@ -6,6 +6,32 @@
     HRM System
 @endsection
 
+@if(Auth::User()->user_type=='employee')
+    @section('content_header')
+        Employee Dashboard
+    @endsection
+@endif
+@if(Auth::User()->user_type=='hr_manager')
+    @section('content_header')
+        HR Manager Dashboard
+    @endsection
+@endif
+@if(Auth::User()->user_type=='chairman')
+    @section('content_header')
+        Chairman Dashboard
+    @endsection
+@endif
+@if(Auth::User()->user_type=='director')
+    @section('content_header')
+        Director Dashboard
+    @endsection
+@endif
+
+@if(Auth::User()->user_type=='director_general')
+    @section('content_header')
+        Director General Dashboard
+    @endsection
+@endif
 
 @section('content')
  

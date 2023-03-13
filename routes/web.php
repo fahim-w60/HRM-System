@@ -28,19 +28,17 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         return view('backend.frontend');
     });
     
-
-
     Route::middleware(['auth', 'verified'])->group(function () {
         //dashboard
         Route::get('/dashboard',[HomeController::class,'getDashboard'])->name('dashboard');
+    });
+        
+});
 
+Route::middleware(['auth', 'verified'])->group(function () {
         //employee section
         Route::resource('employee', EmployeeController::class);
     });
-    
-    
-        
-});
 
 
 
