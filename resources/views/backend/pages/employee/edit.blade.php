@@ -11,8 +11,9 @@
 @section('content')
 <div class="layout-px-spacing">
     <div class="middle-content container-xxl p-0">
-        <form id="myForm" action="{{ route('employee.store') }}" method="post" enctype="multipart/form-data">
+        <form id="myForm" action="{{ route('employee.update',$employee->id) }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('patch')
         <div class="row mb-4 layout-spacing layout-top-spacing">
 
                 <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -20,7 +21,7 @@
                         <div class="row mb-4 form-group">
                             <div class="col-sm-12">
                                 <label>Employee Name</label>
-                                <input type="text" name="emp_name" class="form-control @if($errors->has('emp_name')) is-invalid @endif" placeholder="Employee Name">
+                                <input type="text" name="emp_name" class="form-control @if($errors->has('emp_name')) is-invalid @endif" value="{{ $employee->emp_name }}" placeholder="Employee Name">
                                 @if ($errors->has('emp_name'))
                                     <span class="text-danger">{{ $errors->first('emp_name') }}</span>
                                 @endif
@@ -29,7 +30,7 @@
                         <div class="row form-group mb-4">
                             <div class="col-sm-12">
                                 <label>Employee Email</label>
-                                <input type="email" name="emp_email" class="form-control @if($errors->has('emp_email')) is-invalid @endif" placeholder="Employee Email">
+                                <input type="email" name="emp_email" class="form-control @if($errors->has('emp_email')) is-invalid @endif" value={{ $employee->emp_email }} placeholder="Employee Email">
                                 @if ($errors->has('emp_email'))
                                     <span class="text-danger">{{ $errors->first('emp_email') }}</span>
                                 @endif
@@ -39,15 +40,14 @@
                         <div class="row mb-4 form-group">
                             <div class="col-sm-12">
                                 <label>Employee Phone</label>
-                                <input type="number" name="emp_phone" class="form-control" placeholder="+880">
+                                <input type="number" name="emp_phone" class="form-control" value="{{ $employee->emp_phone }}" placeholder="+880">
                             </div>
                         </div>
 
                         <div class="row mb-4 form-group">
                             <div class="col-sm-12">
                                 <label>Employee Designation</label>
-                                <input type="text" name="designation" class="form-control" placeholder="Employee Designation">
-                              
+                                <input type="text" name="designation" class="form-control" value="{{ $employee->designation }}" placeholder="Employee Designation">
                             </div>
                         </div>
                     </div>
@@ -59,24 +59,19 @@
                            
                             <div class="col-xxl-12 col-md-12 mb-4 form-group">
                                 <label>Address</label>
-                                <input type="text" name="emp_address" class="form-control" placeholder="Address">
+                                <input type="text" name="emp_address" class="form-control" value="{{ $employee->emp_address }}" placeholder="Address">
                             </div>
 
                             <div class="col-xxl-12 col-md-12 mb-4 form-group">
                                 <label for="category">Department</label>
                                 <select class="form-select" name="department_id" aria-label="Default select example">
-                                    <option selected disabled><--Select Department--></option>
+                                    <option selected disabled>Select Department</option>
                                     @foreach ($departments as $dept)
-                                        <option value="{{ $dept->id }}">{{ $dept->name }}</option>        
+                                        <option value="{{ $dept->id }}" {{ $dept->id == $employee->department_id ? 'selected' : '' }}>{{ $dept->name }}</option>        
                                     @endforeach 
                                 </select>
                             </div>
-                            <div class="col-xxl-12 col-md-12">
-                                <div class="form-group mb-4">
-                                    <label for="date">Join Date</label>
-                                    <input type="date" class="form-control form-control-sm" name="join_date" id="date" placeholder="Add date picker">
-                                </div>
-                            </div>
+
 
                             <div class="col-xxl-12 col-md-12">
 
@@ -86,7 +81,7 @@
                             </div>
 
                             <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                <button type="submit" class="btn btn-success w-100">Add Employee</button>
+                                <button type="submit" class="btn btn-success w-100">Update Employee</button>
                             </div>
                         
                         </div>
@@ -107,13 +102,6 @@
 
 
 @section('page_level_css_plugins')
-    <link href="{{  asset('src/plugins/css/dark/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{  asset('src/assets/css/dark/apps/invoice-add.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{  asset('src/plugins/css/light/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{  asset('src/plugins/src/flatpickr/flatpickr.css" rel="stylesheet')}}" type="text/css">
-    <link href="{{  asset('src/plugins/css/light/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{  asset('src/plugins/css/light/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('src/plugins/css/light/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('src/plugins/src/filepond/filepond.min.css')}}">
     <link rel="stylesheet" href="{{ asset('src/plugins/src/filepond/FilePondPluginImagePreview.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/src/tagify/tagify.css')}}">
@@ -143,10 +131,8 @@
     <script src="{{ asset('src/plugins/src/filepond/filepondPluginFileValidateSize.min.js') }}"></script>
     <script src="{{ asset('src/plugins/src/tagify/tagify.min.js') }}"></script>
     <script src="{{ asset('src/assets/js/apps/blog-create.js') }}"></script>
-    <script src="{{  asset('src/plugins/src/flatpickr/flatpickr.js')"></script>
-     <script src="{{  asset('src/assets/js/apps/invoice-add.js')"></script>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
             function mainThamUrl(input){
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();

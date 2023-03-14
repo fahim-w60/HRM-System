@@ -23,7 +23,7 @@ class EmployeeStoreRequest extends FormRequest
     {
         return [
             'emp_name' => 'required',
-            'emp_email' => 'required|email|unique:employees',
+            'emp_email' => 'required',
             
         ];
     }
