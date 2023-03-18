@@ -24,7 +24,12 @@ class EmployeeStoreRequest extends FormRequest
         return [
             'emp_name' => 'required',
             'emp_email' => 'required',
-            
+            'designation' => 'required',
+            'designation' => 'required',
+            'department_id' => 'required',
+        ];
+        [
+            'department_id.required' => 'department is required',
         ];
     }
 }

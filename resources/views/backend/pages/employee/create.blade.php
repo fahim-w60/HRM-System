@@ -21,17 +21,27 @@
                             <div class="col-sm-12">
                                 <label>Employee Name</label>
                                 <input type="text" name="emp_name" class="form-control @if($errors->has('emp_name')) is-invalid @endif" placeholder="Employee Name">
-                                @if ($errors->has('emp_name'))
-                                    <span class="text-danger">{{ $errors->first('emp_name') }}</span>
+                                @if($errors->has('emp_name'))
+                                    <span class="text-danger">Employee Name is required.</span>
                                 @endif
                             </div>
                         </div>
-                        <div class="row form-group mb-4">
+                        <div class="row mb-4 form-group">
                             <div class="col-sm-12">
                                 <label>Employee Email</label>
                                 <input type="email" name="emp_email" class="form-control @if($errors->has('emp_email')) is-invalid @endif" placeholder="Employee Email">
-                                @if ($errors->has('emp_email'))
-                                    <span class="text-danger">{{ $errors->first('emp_email') }}</span>
+                                @if($errors->has('emp_email'))
+                                    <span class="text-danger"> Employee Email is required. </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="row mb-4 form-group">
+                            <div class="col-sm-12">
+                                <label>Employee Designation</label>
+                                <input type="text" name="designation" class="form-control @if($errors->has('designation')) is-invalid @endif" placeholder="Employee Designation">
+                                @if($errors->has('designation'))
+                                    <span class="text-danger">Designation is required.</span>
                                 @endif
                             </div>
                         </div>
@@ -43,13 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-4 form-group">
-                            <div class="col-sm-12">
-                                <label>Employee Designation</label>
-                                <input type="text" name="designation" class="form-control" placeholder="Employee Designation">
-                              
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -64,13 +68,17 @@
 
                             <div class="col-xxl-12 col-md-12 mb-4 form-group">
                                 <label for="category">Department</label>
-                                <select class="form-select" name="department_id" aria-label="Default select example">
+                                <select name="department_id"  class="form-control @if($errors->has('department_id')) is-invalid @endif" aria-label="Default select example" required="required">
+                                    @if($errors->has('department_id'))
+                                        <span class="text-danger">Department is required.</span>
+                                    @endif
                                     <option selected disabled><--Select Department--></option>
                                     @foreach ($departments as $dept)
                                         <option value="{{ $dept->id }}">{{ $dept->name }}</option>        
                                     @endforeach 
                                 </select>
                             </div>
+
                             <div class="col-xxl-12 col-md-12">
                                 <div class="form-group mb-4">
                                     <label for="date">Join Date</label>

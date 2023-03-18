@@ -55,7 +55,7 @@ class EmployeeController extends Controller
         $data->emp_address = $request->emp_address;
         $data->emp_status = 1;
         $data->designation = $request->designation;
-        $data->department_id = $request->department_id;
+        $data->department_id = $request->validated('department_id');
         $data->user_id = Auth::User()->id;
         if($request->has('profile_img'))
         {
