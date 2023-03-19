@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 <div class="nav-item theme-text">
-                    <a href="./index.html" class="nav-link">HRM</a>
+                    <a href="" class="nav-link">HRM</a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">

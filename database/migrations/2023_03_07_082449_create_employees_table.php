@@ -16,9 +16,11 @@ return new class extends Migration
             $table->unsignedInteger('department_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->string('designation')->nullable();
-            $table->string('emp_name');
+            $table->string('emp_name')->nullable();
             $table->string('emp_email')->unique();
             $table->string('emp_phone')->nullable();
+            $table->integer('salary')->nullable();
+            $table->date('join_date')->nullable();
             $table->text('profile_img')->nullable();
             $table->string('emp_address')->nullable();  
             $table->tinyInteger('emp_status')->default(1);

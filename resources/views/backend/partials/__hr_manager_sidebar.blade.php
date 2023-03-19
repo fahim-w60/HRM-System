@@ -31,7 +31,7 @@
                 <a href="{{ route('employee.create') }}"> Add Employee </a>
             </li>
             <li>
-                <a href="{{ route('employee.index') }}"> Employee List </a>
+                <a href="{{ route('employee.index') }}"> Employee Manage </a>
             </li>                            
         </ul>
     </li>

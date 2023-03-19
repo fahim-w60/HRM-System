@@ -36,6 +36,15 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="row mb-4 form-group">
+                            <div class="col-sm-12">
+                                <label>Employee Designation</label>
+                                <input type="text" name="designation" class="form-control @if($errors->has('designation')) is-invalid @endif" value="{{ $employee->designation }}" placeholder="Employee Designation">
+                                @if($errors->has('designation'))
+                                    <span class="text-danger">Designation is required.</span>
+                                @endif
+                            </div>
+                        </div>
                         
                         <div class="row mb-4 form-group">
                             <div class="col-sm-12">
@@ -43,25 +52,20 @@
                                 <input type="number" name="emp_phone" class="form-control" value="{{ $employee->emp_phone }}" placeholder="+880">
                             </div>
                         </div>
-
                         <div class="row mb-4 form-group">
                             <div class="col-sm-12">
-                                <label>Employee Designation</label>
-                                <input type="text" name="designation" class="form-control" value="{{ $employee->designation }}" placeholder="Employee Designation">
+                                <label>Address</label>
+                                <input type="text" name="emp_address" value="{{ $employee->emp_address }}" class="form-control" placeholder="Address">
                             </div>
                         </div>
+
+                        
                     </div>
                 </div>
 
                 <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
                     <div class="widget-content widget-content-area blog-create-section" style="padding:20px;">
                         <div class="row">
-                           
-                            <div class="col-xxl-12 col-md-12 mb-4 form-group">
-                                <label>Address</label>
-                                <input type="text" name="emp_address" class="form-control" value="{{ $employee->emp_address }}" placeholder="Address">
-                            </div>
-
                             <div class="col-xxl-12 col-md-12 mb-4 form-group">
                                 <label for="category">Department</label>
                                 <select class="form-select" name="department_id" aria-label="Default select example">
@@ -72,6 +76,23 @@
                                 </select>
                             </div>
 
+                            <div class="col-xxl-12 col-md-12 mb-4 form-group">
+                                <label>Salary</label>
+                                <input name="salary" type="number" class="form-control @if($errors->has('salary')) is-invalid @endif" value="{{ $employee->salary }}" placeholder="Salary">
+                                @if($errors->has('salary'))
+                                    <span class="text-danger">Salary is required.</span>
+                                @endif
+                            </div>
+
+                            <div class="col-xxl-12 col-md-12">
+                                <div class="form-group mb-4">
+                                    <label for="date">Join Date</label>
+                                    <input name="join_date" type="date" value="{{ $employee->join_date }}" class="form-control @if($errors->has('join_date')) is-invalid @endif"  id="datepicker" placeholder="Add date picker">
+                                    @if($errors->has('join_date'))
+                                        <span class="text-danger">Join Date is required.</span>
+                                    @endif
+                                </div>
+                            </div>
 
                             <div class="col-xxl-12 col-md-12">
 
@@ -132,7 +153,22 @@
     <script src="{{ asset('src/plugins/src/tagify/tagify.min.js') }}"></script>
     <script src="{{ asset('src/assets/js/apps/blog-create.js') }}"></script>
 
-        <script type="text/javascript">
+    <script>
+        $(function(){
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+                day = '0' + day.toString();
+            var minDate= year + '-' + month + '-' + day;
+            $('#datepicker').attr('max', minDate);
+        });
+    </script>
+
+    <script type="text/javascript">
             function mainThamUrl(input){
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -142,5 +178,5 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
-        </script>
+    </script>
 @endsection

@@ -51,7 +51,7 @@
                                         @endif
                                     </td>
                                     <td style="display: flex;">
-                                        <a class="badge badge-light-primary text-start me-2 action-edit" style="margin-top:15px;" href="{{ route('employee.edit',$employee->id) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
+                                        <a class="badge badge-light-primary text-start me-2 action-edit" style="margin-top:15px;margin-bottom: 11px;" href="{{ route('employee.edit',$employee->id) }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
                                         <form action="{{ route('employee.destroy',$employee->id) }}" style="margin-top: 15px; margin-left: -5px;" method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('delete')

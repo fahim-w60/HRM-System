@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Department;
 use App\Http\Requests\EmployeeStoreRequest;
+use App\Http\Requests\EmployeeUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -56,6 +57,9 @@ class EmployeeController extends Controller
         $data->emp_status = 1;
         $data->designation = $request->designation;
         $data->department_id = $request->validated('department_id');
+        $data->designation = $request->validated('designation');
+        $data->salary = $request->validated('salary');
+        $data->join_date = $request->validated('join_date');
         $data->user_id = Auth::User()->id;
         if($request->has('profile_img'))
         {
@@ -89,14 +93,16 @@ class EmployeeController extends Controller
 
         return view('backend.pages.employee.edit',compact('employee','commons','departments','employees'));
     }
-    public function update(EmployeeStoreRequest $request,$id)
+    public function update(EmployeeUpdateRequest $request,$id)
     {
         $data = Employee::findOrFail($id);
         $data->emp_name = $request->validated('emp_name');
-        $data->emp_email = $request->emp_email;
+        $data->emp_email = $request->input('emp_email');
         $data->emp_phone = $request->emp_phone;
         $data->emp_address = $request->emp_address;
-        $data->designation = $request->designation;
+        $data->designation = $request->validated('designation');
+        $data->salary = $request->validated('salary');
+        $data->join_date = $request->validated('join_date');
         $data->department_id = $request->department_id;
         $data->user_id = Auth::User()->id;
         if($request->has('profile_img'))

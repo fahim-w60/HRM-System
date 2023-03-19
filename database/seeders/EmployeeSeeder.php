@@ -22,7 +22,9 @@ class EmployeeSeeder extends Seeder
                 'emp_phone' => '01869520885',
                 'emp_status' => '1',
                 'emp_address' => 'Dhaka',
-                'user_id' => '0', 
+                'user_id' => '0',
+                'designation' => 'manager', 
+                'salary' => '10000',
             ],
 
             [
@@ -32,7 +34,9 @@ class EmployeeSeeder extends Seeder
                 'emp_status' => '1',
                 'emp_address' => 'Dhaka',
                 'department_id' => '1',
-                'user_id' => '0', 
+                'user_id' => '0',
+                'designation' => 'hr_manager', 
+                'salary' => '15000',
             ],
 
             [
@@ -43,6 +47,8 @@ class EmployeeSeeder extends Seeder
                 'emp_address' => 'Dhaka',
                 'department_id' => '1',
                 'user_id' => '0',
+                'designation' => 'dg', 
+                'salary' => '30000',
             ],
 
             [
@@ -52,7 +58,21 @@ class EmployeeSeeder extends Seeder
                 'emp_status' => '1',
                 'emp_address' => 'Dhaka',
                 'department_id' => '1',
-                'user_id' => '0',  
+                'user_id' => '0',
+                'designation' => 'manager', 
+                'salary' => '50000', 
+            ],
+
+            [
+                'emp_name' => 'employee 5',
+                'emp_email' => 'employee5@gmail.com',
+                'emp_phone' => '01869520885',
+                'emp_status' => '1',
+                'emp_address' => 'Dhaka',
+                'department_id' => '1',
+                'user_id' => '0',
+                'designation' => 'manager', 
+                'salary' => '50000',  
             ],
         ]);    
     }
