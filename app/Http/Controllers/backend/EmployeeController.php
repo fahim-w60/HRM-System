@@ -9,6 +9,7 @@ use App\Models\Department;
 use App\Http\Requests\EmployeeStoreRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManagerStatic as Image;
 use DB;
 
 
@@ -65,9 +66,12 @@ class EmployeeController extends Controller
         {
             $image = $request->file('profile_img');
             $imageName = rand().'.'.time().'.'.date('Y-m-d').'.'.$image->getClientOriginalName();
-            $directory = 'upload/employee/profile/';
-            $image->move($directory,$imageName);
-            $data->profile_img = $directory.$imageName; 
+            $image = Image::make('upload/employee/profile/');
+            $image->resize(800, 600);
+            $image->save();
+            // $directory = 'upload/employee/profile/';
+            // $image->move($directory,$imageName);
+            $data->profile_img = 'upload/employee/profile'.$imageName;
         }
         $data->save();
         $notification = array(
