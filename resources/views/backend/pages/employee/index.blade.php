@@ -8,6 +8,12 @@
 {{  $commons['content_title'] }}
 @endsection
 
+{{-- <style>
+    .btn.btn-sm {
+        padding: 5px;    
+    }
+</style> --}}
+
 @section('content')
 <div class="layout-px-spacing">
     <div class="middle-content container-xxl p-0">
@@ -31,30 +37,67 @@
                                     <p><b>Department : {{ $employee->name }}</b></p>
                                 </div>
 
-                                <div class="ms-auto my-3">                                  
-                                    <form action="">
-                                                                          
-                                        <a href="" class="btn btn-primary btn-sm action-btn btn-edit bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Edit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                                <div class="my-3 mx-auto">                                  
+                                    <form action="{{ route('employee.destroy',$employee->id) }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('delete')
+                                        <a class="badge badge-success text-start me-2 action-edit" href="{{ route('employee.edit',$employee->id) }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
                                         </a>
-                                        <a href="" class="btn btn-secondary btn-sm btn-view bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-bs-original-title="View">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+
+                                        <a class="badge badge-secondary text-start me-2 action-edit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
                                         </a>
-                                        <button href="" class="btn btn-danger btn-sm action-btn btn-delete bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Delete">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                        </button> 
+
+
+                                        <button class="badge badge-danger text-start action-delete" style="border:none;"  type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                            </svg>
+                                        </button>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     @endforeach
                 </div>
-            
         </div>
     </div>
 </div>
 @endsection
 @section('page_level_css_plugins')
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.css')}}">
+    
+<link href="{{  asset('src/assets/css/light/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{  asset('src/plugins/css/light/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{  asset('src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{  asset('src/plugins/css/dark/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+@section('page_level_js_plugins')
+<script src="{{  asset('src/assets/js/scrollspyNav.js')}}"></script>
+<script src="{{  asset('src/plugins/src/sweetalerts2/sweetalerts2.min.js')}}"></script>
+<script src="{{  asset('src/plugins/src/sweetalerts2/custom-sweetalert.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.badge-danger.text-start.action-delete').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this record?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            form.submit();
+        }
+        });
+    });
+</script>
 @endsection

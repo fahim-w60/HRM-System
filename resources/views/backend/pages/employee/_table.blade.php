@@ -60,17 +60,12 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                         </tbody>
-                    </table>
-                    {{ $employees->links() }}
+                    </table> 
                 </div>
             </div>
-
         </div>
-
-    </div>
-    
+    </div>  
 </div>
 <style>
     .dataTables_info,

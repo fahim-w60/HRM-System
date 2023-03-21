@@ -9,7 +9,7 @@ use App\Models\Department;
 use App\Http\Requests\EmployeeStoreRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\ImageManagerStatic as Image;
+use Image;
 use DB;
 
 
@@ -25,11 +25,9 @@ class EmployeeController extends Controller
         $employees = DB::table('employees')
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
-        ->latest()->paginate(20);
- 
+        ->get();
 
         return view('backend.pages.employee.index',compact('employees','commons'));
-
     }
     public function create()
     {
@@ -41,7 +39,7 @@ class EmployeeController extends Controller
         $employees = DB::table('employees')
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
-        ->latest()->paginate(20);
+        ->get();
 
         $departments = Department::all();
     
@@ -66,12 +64,10 @@ class EmployeeController extends Controller
         {
             $image = $request->file('profile_img');
             $imageName = rand().'.'.time().'.'.date('Y-m-d').'.'.$image->getClientOriginalName();
-            $image = Image::make('upload/employee/profile/');
-            $image->resize(800, 600);
-            $image->save();
-            // $directory = 'upload/employee/profile/';
-            // $image->move($directory,$imageName);
-            $data->profile_img = 'upload/employee/profile'.$imageName;
+            $image = Image::make($image->getRealPath());
+            $image->resize(400, 400);
+            $image->save(public_path('upload/employee/profile/').$imageName);
+            $data->profile_img = 'upload/employee/profile/'.$imageName;
         }
         $data->save();
         $notification = array(
@@ -92,9 +88,8 @@ class EmployeeController extends Controller
         $employees = DB::table('employees')
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
-        ->latest()->paginate(20);
+        ->get();
        
-
         return view('backend.pages.employee.edit',compact('employee','commons','departments','employees'));
     }
     public function update(EmployeeUpdateRequest $request,$id)
@@ -127,7 +122,6 @@ class EmployeeController extends Controller
             'alert-type' => 'success',
         );
         return back()->with($notification);
-
     }
     public function destroy($id)
     {
@@ -137,6 +131,6 @@ class EmployeeController extends Controller
             'message' => 'Employee Deleted Successfully',
             'alert-type' => 'success',
         );
-        return redirect()->route('employee.create')->with($notification);
+        return redirect()->route('employee.index')->with($notification);
     }
 }
