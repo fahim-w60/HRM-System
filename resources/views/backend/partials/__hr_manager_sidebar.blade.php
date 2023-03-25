@@ -9,7 +9,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </div>
         </a>
-     
+
     </li>
 
     <li class="menu menu-heading">
@@ -32,7 +32,7 @@
             </li>
             <li>
                 <a href="{{ route('employee.index') }}"> Employee Manage </a>
-            </li>                            
+            </li>
         </ul>
     </li>
 
@@ -45,7 +45,7 @@
         <a href="#components" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             <div class="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                <span>Adminstrator</span>
+                <span>Department</span>
             </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -53,16 +53,7 @@
         </a>
         <ul class="collapse submenu list-unstyled" id="components" data-bs-parent="#accordionExample">
             <li>
-                <a href="#">Add Adminstrator</a>
-            </li>
-            <li>
-                <a href="#">Adminstrator List</a>
-            </li>
-            <li>
-                <a href="#">Add Department</a>
-            </li>
-            <li>
-                <a href="#">Department List</a>
+                <a href="{{ route('department.index') }}"> Department List </a>
             </li>
         </ul>
     </li>
@@ -146,7 +137,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -260,7 +251,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -374,7 +365,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -488,7 +479,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -601,7 +592,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -715,7 +706,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -829,7 +820,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>
@@ -865,7 +856,7 @@
             </li>
         </ul>
     </li>
-    
+
 
     <li class="menu menu-heading">
         <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>Report</span></div>
@@ -943,7 +934,7 @@
             </li>
             <li>
                 <a href="./form-maxlength.html"> Maxlength </a>
-            </li>                          
+            </li>
             <li>
                 <a href="./form-checkbox.html"> Checkbox </a>
             </li>

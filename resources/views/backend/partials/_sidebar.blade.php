@@ -20,22 +20,22 @@
             </div>
         </div>
         <div class="shadow-bottom"></div>
-        
+
         @if(Auth::User()->user_type == 'employee')
             @include('backend.partials.__employee_sidebar');
-        @endif    
+        @endif
         @if(Auth::User()->user_type == 'director')
             @include('backend.partials.__director_sidebar');
-        @endif  
+        @endif
         @if(Auth::User()->user_type == 'hr_manager')
             @include('backend.partials.__hr_manager_sidebar');
-        @endif  
+        @endif
         @if(Auth::User()->user_type == 'chairman')
             @include('backend.partials.__chairman_sidebar');
-        @endif  
+        @endif
         @if(Auth::User()->user_type == 'director_general')
             @include('backend.partials.__director_general_sidebar');
-        @endif      
+        @endif
     </nav>
 
 </div>

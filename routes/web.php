@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\backend\{
-    EmployeeController
+    EmployeeController,
+    DepartmentController,
 };
 
 /*
@@ -21,23 +22,28 @@ use App\Http\Controllers\backend\{
 
 
 
-Route::group(['middleware' => 'prevent-back-history'],function(){ 
-    
+Route::group(['middleware' => 'prevent-back-history'],function(){
+
     //homepage
     Route::get('/', function () {
         return view('backend.frontend');
     });
-    
+
+    //dashboard
     Route::middleware(['auth', 'verified'])->group(function () {
-        //dashboard
         Route::get('/dashboard',[HomeController::class,'getDashboard'])->name('dashboard');
     });
-        
+
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-        //employee section
+    //employee section
+    Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('employee', EmployeeController::class);
+    });
+
+    //department section
+    Route::middleware(['auth','verified'])->group(function() {
+        Route::resource('department', DepartmentController::class);
     });
 
 

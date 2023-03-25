@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('emp_name')->nullable();
             $table->string('emp_email')->unique();
             $table->string('emp_phone')->nullable();
-            $table->integer('salary')->nullable();
+            $table->bigInteger('salary')->nullable();
             $table->date('join_date')->nullable();
             $table->text('profile_img')->nullable();
             $table->string('emp_address')->nullable();  
-            $table->tinyInteger('emp_status')->default(1);
+            $table->tinyInteger('emp_status')->nullable();
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
             @include('backend.partials._content_header')
-                
+
             @yield('content')
 
             @include('backend.partials._footer')

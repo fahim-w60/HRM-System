@@ -18,26 +18,31 @@ class DepartmentSeeder extends Seeder
             //Admin
             [
                 'name' => 'Admin',
+                'dept_status' => 1,
                 'created_at' => Carbon::now(),
             ],
             //Software
             [
                 'name' => 'Software',
+                'dept_status' => 1,
                 'created_at' => Carbon::now(),
             ],
             //Documentation
             [
                 'name' => 'Documentation',
+                'dept_status' => 1,
                 'created_at' => Carbon::now(),
             ],
             //Operation
             [
                 'name' => 'Operation',
+                'dept_status' => 1,
                 'created_at' => Carbon::now(),
             ],
             //Accounts
             [
                 'name' => 'Accounts',
+                'dept_status' => 1,
                 'created_at' => Carbon::now(),
             ]
         ]);

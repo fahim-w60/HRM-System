@@ -25,7 +25,8 @@ class EmployeeController extends Controller
         $employees = DB::table('employees')
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
-        ->get();
+        ->where('emp_status', '=',1)
+        ->latest()->paginate(12);
 
         return view('backend.pages.employee.index',compact('employees','commons'));
     }
@@ -39,15 +40,16 @@ class EmployeeController extends Controller
         $employees = DB::table('employees')
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
+        ->where('emp_status','=',1)
         ->get();
 
         $departments = Department::all();
-    
+
         return view('backend.pages.employee.create',compact('employees','commons','departments'));
     }
     public function store(EmployeeStoreRequest $request)
-    {    
-        
+    {
+
         $data = new Employee();
         $data->emp_name = $request->validated('emp_name');
         $data->emp_email = $request->validated('emp_email');
@@ -63,7 +65,7 @@ class EmployeeController extends Controller
         if($request->has('profile_img'))
         {
             $image = $request->file('profile_img');
-            $imageName = rand().'.'.time().'.'.date('Y-m-d').'.'.$image->getClientOriginalName();
+            $imageName = rand().'.'.time().'.'.date('Y-m-d').'.'.$image->getClientOriginalExtension();
             $image = Image::make($image->getRealPath());
             $image->resize(400, 400);
             $image->save(public_path('upload/employee/profile/').$imageName);
@@ -88,8 +90,9 @@ class EmployeeController extends Controller
         $employees = DB::table('employees')
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
+        ->where('emp_status','=',1)
         ->get();
-       
+
         return view('backend.pages.employee.edit',compact('employee','commons','departments','employees'));
     }
     public function update(EmployeeUpdateRequest $request,$id)
@@ -111,10 +114,11 @@ class EmployeeController extends Controller
                 unlink($data->profile_img);
             }
             $image = $request->file('profile_img');
-            $imageName = rand().'.'.time().'.'.date('Y-m-d').'.'.$image->getClientOriginalName();
-            $directory = 'upload/employee/profile/';
-            $image->move($directory,$imageName);
-            $data->profile_img = $directory.$imageName; 
+            $imageName = rand().'.'.time().'.'.date('Y-m-d').'.'.$image->getClientOriginalExtension();
+            $image = Image::make($image->getRealPath());
+            $image->resize(400, 400);
+            $image->save(public_path('upload/employee/profile/').$imageName);
+            $data->profile_img = 'upload/employee/profile/'.$imageName;
         }
         $data->save();
         $notification = array(
@@ -126,7 +130,8 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         $data = Employee::findOrFail($id);
-        $data->delete();
+        $data->emp_status='0';
+        $data->save();
         $notification = array(
             'message' => 'Employee Deleted Successfully',
             'alert-type' => 'success',
