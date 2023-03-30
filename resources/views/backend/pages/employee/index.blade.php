@@ -60,6 +60,8 @@
     {!! $employees->withQueryString()->links('pagination::bootstrap-5') !!}
 </div>
 @endsection
+
+
 @section('page_level_css_plugins')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -71,6 +73,10 @@
 <link href="{{  asset('src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{  asset('src/plugins/css/dark/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
 @endsection
+
+
+
+
 @section('page_level_js_plugins')
 <script src="{{  asset('src/assets/js/scrollspyNav.js')}}"></script>
 <script src="{{  asset('src/plugins/src/sweetalerts2/sweetalerts2.min.js')}}"></script>

@@ -15,7 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('dept_status')->default(1);
-            $table->timestamps();
+
+            $table->dateTime('created_at')->nullable();
+            $table->unsignedInteger('created_by')->nullable();
+
+            $table->dateTime('updated_at')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
+
+            $table->dateTime('deleted_at')->nullable();
+            $table->unsignedInteger('deleted_by')->nullable();
+
         });
     }
 

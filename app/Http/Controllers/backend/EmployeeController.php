@@ -41,7 +41,7 @@ class EmployeeController extends Controller
         ->join('departments','employees.department_id','=','departments.id')
         ->select('employees.*','departments.name')
         ->where('emp_status','=',1)
-        ->get();
+        ->latest()->paginate(10);
 
         $departments = Department::all();
 
@@ -136,6 +136,6 @@ class EmployeeController extends Controller
             'message' => 'Employee Deleted Successfully',
             'alert-type' => 'success',
         );
-        return redirect()->route('employee.index')->with($notification);
+        return back()->with($notification);
     }
 }

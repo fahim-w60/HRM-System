@@ -15,7 +15,7 @@
             @csrf
         <div class="row mb-4 layout-spacing layout-top-spacing">
             <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                <div class="widget-content widget-content-area blog-create-section" style="padding:20px;">  
+                <div class="widget-content widget-content-area blog-create-section" style="padding:20px;">
                     <div class="row mb-4 form-group">
                         <div class="col-sm-12">
                             <label>Employee Name</label>
@@ -44,14 +44,14 @@
                             @endif
                         </div>
                     </div>
-                    
+
                     <div class="row mb-4 form-group">
                         <div class="col-sm-12">
                             <label>Employee Phone</label>
                             <input type="number" name="emp_phone" class="form-control" placeholder="+880">
                         </div>
                     </div>
-                    
+
                     <div class="row mb-4 form-group">
                         <div class="col-sm-12">
                             <label>Address</label>
@@ -74,11 +74,11 @@
                                 @endif
                                 <option selected disabled><--Select Department--></option>
                                 @foreach ($departments as $dept)
-                                    <option value="{{ $dept->id }}">{{ $dept->name }}</option>        
-                                @endforeach 
+                                    <option value="{{ $dept->id }}">{{ $dept->name }}</option>
+                                @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="col-xxl-12 col-md-12 mb-4 form-group">
                             <label>Salary</label>
                             <input name="salary" type="number" class="form-control @if($errors->has('salary')) is-invalid @endif" placeholder="Salary">
@@ -107,7 +107,7 @@
                         <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                             <button type="submit" class="btn btn-success w-100">Add Employee</button>
                         </div>
-                    
+
                     </div>
                 </div>
             </div>
@@ -143,10 +143,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('src/assets/css/dark/forms/switches.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/dark/editors/quill/quill.snow.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/css/dark/tagify/custom-tagify.css') }}">
-    <link href="{{ asset('src/plugins/css/dark/filepond/custom-filepond.css')}}" rel="stylesheet" type="text/css" /> 
+    <link href="{{ asset('src/plugins/css/dark/filepond/custom-filepond.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('src/assets/css/light/apps/blog-create.css') }}">
     <link rel="stylesheet" href="{{ asset('src/assets/css/dark/apps/blog-create.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('src/plugins/src/sweetalerts2/sweetalerts2.css')}}">
+    <link href="{{  asset('src/assets/css/light/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{  asset('src/plugins/css/light/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{  asset('src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{  asset('src/plugins/css/dark/sweetalerts2/custom-sweetalert.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 
@@ -165,18 +170,18 @@
     <script src="{{  asset('src/plugins/src/flatpickr/flatpickr.js')}}"></script>
     <script src="{{  asset('src/assets/js/apps/invoice-add.js')}}"></script>
     <script>
-    $(function(){
-        var dtToday = new Date();
-        var month = dtToday.getMonth() + 1;
-        var day = dtToday.getDate();
-        var year = dtToday.getFullYear();
-        if(month < 10)
-            month = '0' + month.toString();
-        if(day < 10)
-            day = '0' + day.toString();
-        var minDate= year + '-' + month + '-' + day;
-        $('#datepicker').attr('max', minDate);
-    });
+        $(function(){
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+                day = '0' + day.toString();
+            var minDate= year + '-' + month + '-' + day;
+            $('#datepicker').attr('max', minDate);
+        });
     </script>
     <script type="text/javascript">
             function mainThamUrl(input){
@@ -188,5 +193,35 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
+    </script>
+    <script src="{{  asset('src/plugins/src/sweetalerts2/sweetalerts2.min.js')}}"></script>
+    <script src="{{  asset('src/plugins/src/sweetalerts2/custom-sweetalert.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.badge-light-danger.text-start.action-delete').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+
+            event.preventDefault();
+            swal({
+                title: 'Are you sure?',
+                text: "You can able to revert this employee!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                Swal.fire(
+                'Deleted!',
+                'Employee has been deleted Successfully.',
+                'success'
+                )
+                form.submit();
+            }
+            });
+        });
     </script>
 @endsection

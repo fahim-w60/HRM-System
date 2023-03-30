@@ -2,10 +2,10 @@
 
     <div class="middle-content container-xxl p-0">
         <div class="row" id="cancel-row">
-        
+
             <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">
                 <div class="widget-content widget-content-area br-8">
-                    <table id="invoice-list" class="table dt-table-hover" style="width:100%">
+                    <table id="invoice-list" class="table dt-table-hover" style="width:100%;">
                         <thead>
                             <tr>
                                 <th class="checkbox-column"> SL</th>
@@ -33,7 +33,7 @@
                                             <img alt="avatar" style="height:60px;width:80px;" class="img-thumbnail img-fluid" src="{{asset($employee->profile_img)}}">
                                         @else
                                             <img alt="avatar" style="height:60px;width:80px;" class="img-thumbnail img-fluid" src="{{ asset('/upload/employee/profile/No_Image_Available.jpg') }}">
-                                        @endif   
+                                        @endif
                                     </td>
                                     <td>
                                         <span class="inv-amount">{{ $employee->emp_address }}</span>
@@ -60,12 +60,15 @@
                                     </td>
                                 </tr>
                             @endforeach
+
                         </tbody>
-                    </table> 
+
+                    </table>
+                    {!! $employees->withQueryString()->links('pagination::bootstrap-5') !!}
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </div>
 <style>
     .dataTables_info,
@@ -77,5 +80,17 @@
     }
     .dt-button.btn.btn-primary{
         display: none !important;
+    }
+    .paginate_button.page-item{
+        display: none !important;
+    }
+    .dataTables_info{
+        display: none !important;
+    }
+    .table-responsive{
+        margin-bottom: -30px !important;
+    }
+    .small.text-muted{
+        padding-left: 10px !important;
     }
 </style>
