@@ -25,7 +25,7 @@ class DepartmentController extends Controller
     public function store(DepartmentStoreRequest $request)
     {
         $data = new Department();
-        $data->name = $request->name;
+        $data->name =$request->validated('name');
         $data->created_at = Carbon::now();
         $data->created_by = Auth::User()->id;
         $data->save();
