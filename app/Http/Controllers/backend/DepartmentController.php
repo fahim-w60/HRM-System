@@ -30,7 +30,7 @@ class DepartmentController extends Controller
         $data->created_by = Auth::User()->id;
         $data->save();
         $notification = array(
-            'message' => 'Department Added Successfully',
+            'message' => 'Department Added Successfully !',
             'alert-type' => 'success',
         );
         return back()->with($notification);
